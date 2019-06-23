@@ -1,0 +1,18 @@
+[
+{
+  "modid": "golems_thermal",
+  "name": "Thermal Golems Addon",
+  "description": "Extra Golems support for Thermal Foundation",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["skyjay1"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "requiredMods": [ "forge", "golems", "thermalfoundation"],
+  "dependencies": [ "forge", "golems", "thermalfoundation" ],
+  "useDependencyInformation": true
+}
+]
