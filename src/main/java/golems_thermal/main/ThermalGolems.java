@@ -4,6 +4,7 @@ package golems_thermal.main;
 import org.apache.logging.log4j.Logger;
 
 import golems_thermal.proxy.CommonProxy;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -29,7 +30,7 @@ public class ThermalGolems {
 
 	@EventHandler
 	public void preInit(final FMLPreInitializationEvent event) {
-		
+		ThermalGolemConfig.initGolemConfigSets(new Configuration(event.getSuggestedConfigurationFile()));
 	}
 
 	@EventHandler
@@ -39,6 +40,6 @@ public class ThermalGolems {
 	
 	@SubscribeEvent
 	public static void registerEntities(final RegistryEvent.Register<EntityEntry> event) {
-		proxy.registerEntities(event);
+		
 	}
 }

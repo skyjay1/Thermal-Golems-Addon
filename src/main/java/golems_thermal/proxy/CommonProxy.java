@@ -23,9 +23,7 @@ public class CommonProxy {
 	
 	private static EntityEntry build(final Class<? extends GolemBase> entityClass, final String name, Block... blocks) {
 		// register block(s) with GolemLookup
-		if(blocks != null && blocks.length > 0) {
-			GolemLookup.addGolem(entityClass, blocks);
-		}
+		GolemLookup.addGolem(entityClass, blocks);
 		// build an EntityEntry to return
 		EntityEntryBuilder builder = EntityEntryBuilder.<GolemBase>create();
 		builder.entity(entityClass);
