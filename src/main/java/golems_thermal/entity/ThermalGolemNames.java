@@ -18,7 +18,6 @@ public final class ThermalGolemNames {
 	public static final String LEAD_GOLEM = "golem_lead_tf";
 	public static final String LUMIUM_GOLEM = "golem_lumium_tf";
 	public static final String MANAINFUSED_GOLEM = "golem_mana-infused_tf";
-	public static final String MITHRIL_GOLEM = "golem_mithril_tf";
 	public static final String NICKEL_GOLEM = "golem_nickel_tf";
 	public static final String PLATINUM_GOLEM = "golem_platinum_tf";
 	public static final String ROCKWOOL_GOLEM = "golem_rockwool_tf";
