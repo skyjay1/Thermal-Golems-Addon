@@ -6,8 +6,9 @@ import com.golems.util.GolemLookup;
 import golems_thermal.entity.thermal_foundation.*;
 import net.minecraftforge.common.config.Configuration;
 
-public class ThermalGolemConfig {
-
+public final class ThermalGolemConfig {
+	
+	private ThermalGolemConfig() {}
 	
 	public static void initGolemConfigSets(final Configuration config) {
 		config.load();
@@ -23,8 +24,12 @@ public class ThermalGolemConfig {
 		GolemLookup.addConfig(EntityInvarGolem.class, new GolemConfigSet(config, "Invar Golem", 60.0D, 8.0F));
 		GolemLookup.addConfig(EntityIridiumGolem.class, new GolemConfigSet(config, "Iridium Golem", 60.0D, 8.0F));
 		GolemLookup.addConfig(EntityLeadGolem.class, new GolemConfigSet(config, "Lead Golem", 60.0D, 8.0F));
-		GolemLookup.addConfig(EntityLumiumGolem.class, new GolemConfigSet(config, "Lumium Golem", 60.0D, 8.0F));
-		GolemLookup.addConfig(EntityManaInfusedGolem.class, new GolemConfigSet(config, "Mana-Infused Golem", 60.0D, 8.0F));
+		GolemLookup.addConfig(EntityLumiumGolem.class, new GolemConfigSet(config, "Lumium Golem", 60.0D, 8.0F)
+				.addKey(EntityLumiumGolem.ALLOW_SPECIAL, true, "Whether the golem provides light")
+				.addKey(EntityLumiumGolem.FREQUENCY, 2, 1, 24000, "Frequency of light-updates in ticks"));
+		GolemLookup.addConfig(EntityManaInfusedGolem.class, new GolemConfigSet(config, "Mana-Infused Golem", 60.0D, 8.0F)
+				.addKey(EntityManaInfusedGolem.ALLOW_SPECIAL, true, "Whether the golem provides faint light")
+				.addKey(EntityManaInfusedGolem.FREQUENCY, 2, 1, 24000, "Frequency of light-updates in ticks"));
 		GolemLookup.addConfig(EntityNickelGolem.class, new GolemConfigSet(config, "Nickel Golem", 60.0D, 8.0F));
 		GolemLookup.addConfig(EntityPlatinumGolem.class, new GolemConfigSet(config, "Platinum Golem", 60.0D, 8.0F));
 		GolemLookup.addConfig(EntityRockwoolGolem.class, new GolemConfigSet(config, "Rockwool Golem", 50.0D, 6.0F));

@@ -4,10 +4,32 @@ import com.golems.entity.GolemBase;
 import com.golems.util.GolemLookup;
 
 import cofh.thermalfoundation.init.TFBlocks;
+import golems_thermal.block.BlockUtilityFixed;
 import golems_thermal.entity.ThermalGolemNames;
-import golems_thermal.entity.thermal_foundation.*;
+import golems_thermal.entity.thermal_foundation.EntityAluminumGolem;
+import golems_thermal.entity.thermal_foundation.EntityBronzeGolem;
+import golems_thermal.entity.thermal_foundation.EntityCoalCokeGolem;
+import golems_thermal.entity.thermal_foundation.EntityConstantanGolem;
+import golems_thermal.entity.thermal_foundation.EntityCopperGolem;
+import golems_thermal.entity.thermal_foundation.EntityElectrumGolem;
+import golems_thermal.entity.thermal_foundation.EntityEnderiumGolem;
+import golems_thermal.entity.thermal_foundation.EntityHardGlassGolem;
+import golems_thermal.entity.thermal_foundation.EntityInvarGolem;
+import golems_thermal.entity.thermal_foundation.EntityIridiumGolem;
+import golems_thermal.entity.thermal_foundation.EntityLeadGolem;
+import golems_thermal.entity.thermal_foundation.EntityLumiumGolem;
+import golems_thermal.entity.thermal_foundation.EntityManaInfusedGolem;
+import golems_thermal.entity.thermal_foundation.EntityNickelGolem;
+import golems_thermal.entity.thermal_foundation.EntityPlatinumGolem;
+import golems_thermal.entity.thermal_foundation.EntityRockwoolGolem;
+import golems_thermal.entity.thermal_foundation.EntitySignalumGolem;
+import golems_thermal.entity.thermal_foundation.EntitySilverGolem;
+import golems_thermal.entity.thermal_foundation.EntitySteelGolem;
+import golems_thermal.entity.thermal_foundation.EntityTinGolem;
 import golems_thermal.main.ThermalGolems;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.event.RegistryEvent;
@@ -31,6 +53,13 @@ public class CommonProxy {
 		builder.id(new ResourceLocation(ThermalGolems.MODID, name), ++entityCount);
 		builder.tracker(48, 3, true);
 		return builder.build();
+	}
+	
+	@SubscribeEvent
+	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
+		event.getRegistry().register(
+				new BlockUtilityFixed(Material.GLASS, 0.5F, 2, Blocks.AIR.getDefaultState())
+					.setRegistryName(ThermalGolems.MODID, "block_glow_fixed"));
 	}
 	
 	@SubscribeEvent

@@ -10,6 +10,6 @@ import net.minecraft.world.World;
 public class EntityBronzeGolem extends ThermalGolemColorized {
 
 	public EntityBronzeGolem(World world) {
-		super(world, 0xEEA95A, true);
+		super(world, 0x00EEA95A, true);
 	}
 }
