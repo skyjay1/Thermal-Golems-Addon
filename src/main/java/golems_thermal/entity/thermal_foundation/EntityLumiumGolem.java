@@ -4,6 +4,9 @@ import com.golems.blocks.BlockUtilityGlow;
 import com.golems.entity.ai.EntityAIUtilityBlock;
 import com.golems.main.GolemItems;
 
+import cofh.thermalfoundation.block.BlockStorageAlloy;
+import cofh.thermalfoundation.init.TFBlocks;
+import golems_thermal.entity.ThermalGolemColorized;
 import golems_thermal.entity.ThermalGolemNames;
 import golems_thermal.entity.ThermalGolemTextured;
 import golems_thermal.main.ThermalGolems;
@@ -20,6 +23,9 @@ public class EntityLumiumGolem extends ThermalGolemTextured {
 
 	public EntityLumiumGolem(World world) {
 		super(world);
+		this.setLootTableLoc(ThermalGolems.MODID, ThermalGolemNames.LUMIUM_GOLEM);
+		this.setCreativeReturn(ThermalGolemColorized.getStack(TFBlocks.blockStorageAlloy.getDefaultState()
+				.withProperty(BlockStorageAlloy.VARIANT, BlockStorageAlloy.Type.LUMIUM)));
 		final boolean allowed = getConfig(this).getBoolean(ALLOW_SPECIAL);
 		final int freq = getConfig(this).getInt(FREQUENCY);
 		final IBlockState state = GolemItems.blockLightSource.getDefaultState().withProperty(BlockUtilityGlow.LIGHT_LEVEL, 15);

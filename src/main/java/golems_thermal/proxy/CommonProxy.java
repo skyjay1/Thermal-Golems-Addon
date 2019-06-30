@@ -88,8 +88,38 @@ public class CommonProxy {
 		);
 	}
 
+	public static void registerLootTables() {
+		// basic loot tables
+		for(final String s : ThermalGolemNames.SINGLE_LOOT_TABLES) {
+			registerLootTable(s);
+		}
+		// multi-texture loot tables
+		registerLootTables(ThermalGolemNames.ROCKWOOL_GOLEM, EntityRockwoolGolem.COLOR_ARRAY.length);
+	}
 	
 	protected static void registerLootTable(final String name) {
 		LootTableList.register(new ResourceLocation(ThermalGolems.MODID, "entities/" + name));
+	}
+	
+	/**
+	 * Registers multiple loot tables for each of the textures specified. They are registered under
+	 * the subfile [name] and individually named according to each element in [textures]
+	 */
+	protected static void registerLootTables(final String name, final String[] textures) {
+		for(String s : textures) {
+			LootTableList.register(new ResourceLocation(ThermalGolems.MODID, "entities/" + name + "/" + s));
+		}
+	}
+	
+	/**
+	 * Registers loot tables for GolemColorizedMultiTextured, with loot tables 
+	 * registered under the subfile [name] and individually named '0' through '[max-1]'
+	 */
+	protected static void registerLootTables(final String name, final int max) {
+		String[] array = new String[max];
+		for (int i = 0; i < max; i++) {
+			array[i] = Integer.toString(i);
+		}
+		registerLootTables(name, array);
 	}
 }

@@ -12,6 +12,7 @@ public class ClientProxy extends CommonProxy {
 	
 	@SubscribeEvent
 	public static void registerModels(final ModelRegistryEvent event) {
+		// GOLEM MODELS AND RENDERS
 		com.golems.proxies.ClientProxy.registerEntityRender(EntityAluminumGolem.class);
 		com.golems.proxies.ClientProxy.registerEntityRender(EntityBronzeGolem.class);
 		com.golems.proxies.ClientProxy.registerEntityRender(EntityCoalCokeGolem.class);
@@ -32,5 +33,7 @@ public class ClientProxy extends CommonProxy {
 		com.golems.proxies.ClientProxy.registerEntityRender(EntitySilverGolem.class);
 		com.golems.proxies.ClientProxy.registerEntityRender(EntitySteelGolem.class);
 		com.golems.proxies.ClientProxy.registerEntityRender(EntityTinGolem.class);
+		
+		// BLOCK MODELS AND RENDERS
 	}
 }

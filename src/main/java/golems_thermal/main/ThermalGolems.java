@@ -38,6 +38,6 @@ public class ThermalGolems {
 
 	@EventHandler
 	public void init(final FMLInitializationEvent event) {
-		
+		CommonProxy.registerLootTables();
 	}
 }

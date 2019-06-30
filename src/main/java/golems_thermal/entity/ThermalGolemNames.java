@@ -24,5 +24,13 @@ public final class ThermalGolemNames {
 	public static final String SIGNALUM_GOLEM = "golem_signalum_tf";
 	public static final String SILVER_GOLEM = "golem_silver_tf";
 	public static final String STEEL_GOLEM = "golem_steel_tf";
-	public static final String TIN_GOLEM = "golem_tin_tf";	
+	public static final String TIN_GOLEM = "golem_tin_tf";
+	
+	public static final String[] SINGLE_LOOT_TABLES = new String[] {
+			ALUMINUM_GOLEM, BRONZE_GOLEM, COALCOKE_GOLEM, CONSTANTAN_GOLEM, 
+			COPPER_GOLEM, ELECTRUM_GOLEM, ENDERIUM_GOLEM, HARDGLASS_GOLEM, 
+			INVAR_GOLEM, IRIDIUM_GOLEM, LEAD_GOLEM, LUMIUM_GOLEM, MANAINFUSED_GOLEM, 
+			NICKEL_GOLEM, PLATINUM_GOLEM, SIGNALUM_GOLEM, SILVER_GOLEM,
+			STEEL_GOLEM, TIN_GOLEM
+	};
 }
