@@ -72,7 +72,7 @@ public class CommonProxy {
 			build(EntityCopperGolem.class, ThermalGolemNames.COPPER_GOLEM),
 			build(EntityElectrumGolem.class, ThermalGolemNames.ELECTRUM_GOLEM),
 			build(EntityEnderiumGolem.class, ThermalGolemNames.ENDERIUM_GOLEM),
-			build(EntityHardGlassGolem.class, ThermalGolemNames.HARDGLASS_GOLEM),
+			build(EntityHardGlassGolem.class, ThermalGolemNames.HARDGLASS_GOLEM, TFBlocks.blockGlass, TFBlocks.blockGlassAlloy),
 			build(EntityInvarGolem.class, ThermalGolemNames.INVAR_GOLEM),
 			build(EntityIridiumGolem.class, ThermalGolemNames.IRIDIUM_GOLEM),
 			build(EntityLeadGolem.class, ThermalGolemNames.LEAD_GOLEM),

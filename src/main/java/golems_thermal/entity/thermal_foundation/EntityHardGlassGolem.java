@@ -10,11 +10,11 @@ public class EntityHardGlassGolem extends ThermalGolemTextured {
 
 	public EntityHardGlassGolem(World world) {
 		super(world);
+		this.setLootTableLoc(ThermalGolems.MODID, ThermalGolemNames.HARDGLASS_GOLEM);
 	}
 
 	@Override
 	protected ResourceLocation applyTexture() {
-		// TODO make this texture
 		return makeTexture(ThermalGolems.MODID, ThermalGolemNames.HARDGLASS_GOLEM);
 	}
 }

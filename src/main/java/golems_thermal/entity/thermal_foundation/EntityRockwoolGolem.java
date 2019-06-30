@@ -1,21 +1,20 @@
 package golems_thermal.entity.thermal_foundation;
 
 import com.golems.entity.GolemColorizedMultiTextured;
-import com.golems.entity.GolemMultiTextured;
 
 import cofh.thermalfoundation.block.BlockRockwool;
 import golems_thermal.entity.ThermalGolemNames;
-import golems_thermal.entity.ThermalGolemTextured;
 import golems_thermal.main.ThermalGolems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemDye;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityRockwoolGolem extends GolemColorizedMultiTextured {
 
@@ -40,30 +39,29 @@ public class EntityRockwoolGolem extends GolemColorizedMultiTextured {
 	@Override
 	public void onBuilt(final IBlockState body, final IBlockState legs, final IBlockState arm1, final IBlockState arm2) { 
 		if(body.getPropertyKeys().contains(BlockRockwool.VARIANT)) {
-			
 			this.setTextureNum((byte)body.getValue(BlockRockwool.VARIANT).getMetadata());
-			
-//			switch(body.getValue(BlockRockwool.VARIANT)) {
-//			case BLACK:		this.setTextureNum((byte)15); break;
-//			case RED:		this.setTextureNum((byte)14); break;
-//			case GREEN:		this.setTextureNum((byte)13); break;
-//			case BROWN:		this.setTextureNum((byte)12); break;
-//			case BLUE:		this.setTextureNum((byte)11); break;
-//			case PURPLE:	this.setTextureNum((byte)10); break;
-//			case CYAN:		this.setTextureNum((byte)9); break;
-//			case SILVER:	this.setTextureNum((byte)8); break;
-//			case GRAY:		this.setTextureNum((byte)7); break;
-//			case PINK:		this.setTextureNum((byte)6); break;
-//			case LIME:		this.setTextureNum((byte)5); break;
-//			case YELLOW:	this.setTextureNum((byte)4); break;
-//			case LIGHT_BLUE:this.setTextureNum((byte)3); break;
-//			case MAGENTA:	this.setTextureNum((byte)2); break;
-//			case ORANGE:	this.setTextureNum((byte)1); break;
-//			case WHITE:		this.setTextureNum((byte)0); break;
-//			default:
-//				break;
-//			
-//			}
 		}
+	}
+	
+	@Override
+	public boolean processInteract(final EntityPlayer player, final EnumHand hand) {
+		final ItemStack stack = player.getHeldItem(hand);
+		// only change texture when player has empty hand
+		// ANOTHER FIX WE MISSED:  checking #doesInteractChangeTexture
+		if (!stack.isEmpty() || !this.doesInteractChangeTexture()) {
+			return false;
+		} else {
+			int incremented = ((this.getTextureNum() + 1) % this.colors.length);
+			this.setTextureNum((byte) incremented);
+			this.updateTextureByData(this.getTextureNum());
+			this.writeEntityToNBT(this.getEntityData());
+			player.swingArm(hand);
+			return true;
+		}
+	}
+	
+	@Override
+	public String getModId() {
+		return ThermalGolems.MODID;
 	}
 }
