@@ -1,6 +1,9 @@
 package golems_thermal.entity.thermal_foundation;
 
+import java.util.List;
+
 import com.golems.blocks.BlockUtilityGlow;
+import com.golems.entity.EntityGlowstoneGolem;
 import com.golems.entity.ai.EntityAIUtilityBlock;
 import com.golems.main.GolemItems;
 
@@ -12,6 +15,7 @@ import golems_thermal.entity.ThermalGolemTextured;
 import golems_thermal.main.ThermalGolems;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -54,5 +58,13 @@ public class EntityLumiumGolem extends ThermalGolemTextured {
 	@Override
 	public boolean isProvidingLight() {
 		return true;
+	}
+	
+	@Override
+	public List<String> addSpecialDesc(final List<String> list) {
+		if (getConfig(this).getBoolean(ALLOW_SPECIAL)) {
+			list.add(TextFormatting.RED + trans("entitytip.lights_area"));
+		}
+		return list;
 	}
 }

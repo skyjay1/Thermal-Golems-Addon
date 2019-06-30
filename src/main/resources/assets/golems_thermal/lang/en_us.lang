@@ -19,3 +19,8 @@ entity.golems_thermal.golem_signalum_tf.name=Signalum Golem
 entity.golems_thermal.golem_silver_tf.name=Silver Golem
 entity.golems_thermal.golem_steel_tf.name=Steel Golem
 entity.golems_thermal.golem_tin_tf.name=Tin Golem
+
+entitytip.magic_immunity=Immune to magic
+entitytip.fast=Speedy
+entitytip.heavy=Heavy!
+entitytip.extra_damage_undead=Extra damage to Undead
