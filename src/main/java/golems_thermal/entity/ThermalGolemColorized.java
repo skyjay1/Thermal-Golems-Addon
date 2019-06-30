@@ -13,7 +13,9 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -83,5 +85,30 @@ public abstract class ThermalGolemColorized extends GolemColorized {
 		updated.setPlayerCreated(existing.isPlayerCreated());
 		existing.getEntityWorld().spawnEntity(updated);
 		existing.setDead();
+		
+	}
+	
+	public static void replaceFailAnimation(final GolemBase existing) {	
+		final World world = existing.getEntityWorld();
+		final double x = existing.posX;
+		final double y = existing.posY;
+		final double z = existing.posZ;
+		// spawn particles
+		if(world.isRemote) {
+			final double motion = 0.12D;
+			for (int i1 = 20 + world.rand.nextInt(10); i1 > 0; --i1) {
+				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
+					x + world.rand.nextDouble() - 0.5D,
+					y + world.rand.nextDouble() + 1.0D, 
+					z + world.rand.nextDouble() - 0.5D,
+					world.rand.nextDouble() * motion,
+					world.rand.nextDouble() * motion * 0.25D,
+					world.rand.nextDouble() * motion);
+			}
+			// play sound to indicate failure
+			world.playSound(x, y, z, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 
+					0.9F + world.rand.nextFloat(), 1.0F, false);
+		}
+		
 	}
 }

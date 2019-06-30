@@ -70,6 +70,7 @@ public class EntityAluminumGolem extends ThermalGolemColorized {
 		if(!shouldContinue) {
 			// drop these blocks and kill the golem
 			dropAsItems(this, body, legs, arm1, arm2, GolemItems.golemHead.getDefaultState());
+			replaceFailAnimation(this);
 			this.setDead();
 		}
 	}
